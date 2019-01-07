@@ -10,26 +10,20 @@
 /* ==       CODES COULEURS           */
 /*---------------------------------------- */
 /*
-Noir (text) :            #000
-beige (fond) :         #e2d6c4
-boutons :    #331902
-
+maron foncé (text) :            #331902
+blanc:                          white
+beige :                         #e2d6c4
+kaki:                           #8d8b40
 */
 
 /* ---------------------------------------- */
-/* == DÉFINITIONS DES POLICES*/
+/* == commun à toute les sections ou pages  */
 /*---------------------------------------- */
+
 body {
   font-family: 'Ubuntu', sans-serif;
-  margin: auto;
-  width: 100%;
   font-size: 16px;
   text-align: justify;
-  margin-top: -300px;
-  z-index: 0;
-  background-color: #e2d6c4;
-
-
 }
 
 h1 {
@@ -38,7 +32,14 @@ h1 {
   font-size: 2.2em;
   line-height: 1em;
   text-align: center;
+}
 
+h4 {
+  font-family: 'Caveat', cursive;
+  text-transform: uppercase;
+  font-size: 1.2em;
+  line-height: 2em;
+  text-align: center;
 }
 
 .row {
@@ -46,28 +47,243 @@ h1 {
   margin-left: 8%;
 }
 
+#body {
+  z-index: 0;
+  width: 100%;
+}
+
+/*        Articles               */
+
+article {
+  background-color: white;
+  padding: 30px 15px;
+  box-shadow: 0px 10px 30px 0 rgba(49, 52, 57, 0.3), 0 10px 30px rgba(0, 0, 0, 0.08);
+
+  margin-right: 8%;
+  margin-left: 8%;
+  margin-bottom: 8%;
+  border-radius: 10px;
+  text-align: center;
+
+}
+
+article p {
+  text-align: justify;
+}
+
+/*     boutons     */
+.btn.btn-primary,
+input[type="submit"] {
+  background-color: #331902;
+  color: #e2d6c4;
+  border: 2px solid #e2d6c4;
+  padding: 15px 30px;
+  border-radius: 10px;
+}
+
+.btn.btn-primary:hover,
+input[type="submit"]:hover {
+  background-color: #e2d6c4;
+  color: #331902;
+  border: 2px solid #331902;
+  padding: 15px 30px;
+  border-radius: 10px;
+}
+
 /* ---------------------------------------- */
-/* == header         */
+/* ==              header                   */
 /*---------------------------------------- */
+
 header {
-  height: 909px;
   width: 100%;
   margin: auto;
   z-index: 0;
-
-
 }
 
-#fonds {
-  z-index: 0;
-  width: 100%;
-  background-repeat: no-repeat;
+/* ==           menu           */
+
+div.dropright a.menuburger {
+  color: #8d8b40;
+  border-style: outset;
+}
+
+.menuburger::before,
+.menuburger::after {
+  content: "";
+  display: block;
+}
+
+.menuburger,
+.menuburger::before,
+.menuburger::after {
+  position: fixed;
+  top: 40px;
+  left: 40px;
+  width: 33px;
+  height: 6px;
+  z-index: 5;
+  background-color: #8d8b40;
+  transition: all 0.3s;
+  border-style: outset;
+}
+
+.menuburger::before {
+  margin-top: -12px;
+}
+
+.menuburger::after {
+  margin-top: 12px;
+}
+
+div.dropright a.menuburger:hover {
+  background-color: transparent;
+  color: transparent;
+}
+
+div.dropright a.menuburger:hover::before {
+  margin-top: 0;
+  transform: rotate(-45deg);
+}
+
+div.dropright a.menuburger:hover::after {
+  margin-top: 0;
+  transform: rotate(45deg);
+}
+
+.dropbtn:hover {
+  background-image: url(../images/menuhover.png);
+}
+
+.dropright {
+  position: relative;
+}
+
+.drop-menu {
+  position: fixed;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  top: 10px;
+  left: -400px;
+  background-color: white;
+}
+
+.drop-menu a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  z-index: 1;
+  background-color: white;
+  margin-left: 65px;
+}
+
+.dropright:hover .drop-menu {
+  display: block;
+  transition-property: transform;
+  transition-duration: 1s;
+  transform: translateX(412px)
+}
+
+.drop-menu a:hover {
+  background-color: rgba(225, 212, 190, 0.5)
+}
+
+.drop-menu > a:nth-child(1) {
+  margin-top: 65px
+}
+
+/* ---------------------------------------- */
+/* ==     front page                       */
+/*---------------------------------------- */
+
+#back {
   background-attachment: fixed;
   background-position: top;
   background-image: url(../images/header.png);
-  height: 972px;
-  background-size: contain;
+  background-size: cover;
+  position: absolute;
+  width: 100%;
 }
+
+#front {
+  z-index: 4;
+  background-color: transparent;
+  margin-top: 30%
+}
+
+/*     photo      */
+#photo {
+  margin: auto;
+}
+
+#photo img {
+  max-width: 350px;
+  width: 100%;
+  height: auto;
+  margin: auto;
+  align-self: center;
+  display: block;
+}
+
+/*     illustrations principaux titres     */
+
+html body div#mainTitles.row div#conteneur.col-12 div#photo.col-sm-6.col-md-4.col-lg-2 a img {
+  margin: 20px 10px;
+  border: 6px #331902 outset;
+}
+
+figcaption {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  min-width: 250px;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0);
+  transition-property: background-color;
+  transition-duration: 2s;
+  padding: 15px;
+}
+
+figcaption h4 {
+  margin-top: 5%;
+  z-index: 10;
+  text-transform: uppercase;
+  color: rgba(29, 14, 9, 0);
+  transition-property: color;
+  transition-duration: 4s;
+}
+
+figcaption p {
+  text-align: justify;
+  color: rgba(29, 14, 9, 0);
+  transition-property: color;
+  transition-duration: 4s;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+figure:hover figcaption {
+  bottom: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+figure:hover h4 {
+
+  color: rgba(29, 14, 9, 1);
+  transition-property: color;
+  transition-duration: 3s;
+}
+
+figure:hover p {
+
+  color: rgba(29, 14, 9, 1);
+  transition-property: color;
+  transition-duration: 3s;
+}
+
 
 /*-----annimation oiseaux--------*/
 
@@ -347,7 +563,7 @@ header {
   }
 
   100% {
-    left: -4%;
+    left: -10%;
     top: 12%;
     background-image: url(../images/Birds/bird49.png);
   }
@@ -407,92 +623,42 @@ header {
   }
 
   100% {
-    left: -4%;
+    left: -10%;
     top: 10%;
     background-image: url(../images/Birds/bird57.png);
   }
 }
 
 /* ---------------------------------------- */
-/* == menu         */
-/*---------------------------------------- */
-/* -- hamburger --*/
-.dropbtn {
-  position: fixed;
-  top: 30px;
-  left: 30px;
-  width: 150px;
-  height: 150px;
-  background-image: url(../images/menu.png);
-  background-repeat: no-repeat;
-  z-index: 5;
-  background-color: transparent;
-  border: none;
-}
-
-.dropbtn:hover {
-  background-image: url(../images/menuhover.png);
-}
-
-.dropright {
-  position: relative;
-}
-
-.drop-menu {
-  position: fixed;
-  min-width: 200px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-  top: 10px;
-  left: -400px;
-  background-color: white;
-
-}
-
-.drop-menu a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  z-index: 1;
-  background-color: white;
-  margin-left: 65px;
-
-}
-
-.dropright:hover .drop-menu {
-  display: block;
-  transition-property: transform;
-  transition-duration: 1s;
-  transform: translateX(412px)
-}
-
-.drop-menu a:hover {
-  background-color: rgba(225, 212, 190, 0.5)
-}
-
-.drop-menu > a:nth-child(1) {
-  margin-top: 65px
-}
-
-
-/* ---------------------------------------- */
-/* == Articles                             */
+/* ==      chapter page                     */
 /*---------------------------------------- */
 
+#backChapter {
+  width: 100%;
+  background-attachment: fixed;
+  background-position: top;
+  background-image: url(../images/aurora-borealis-3715416.jpg);
+  background-size: cover;
+  position: absolute;
+}
 
-article {
-  background-color: white;
-  padding: 30px 15px;
-  box-shadow: 0px 10px 30px 0 rgba(49, 52, 57, 0.3), 0 10px 30px rgba(0, 0, 0, 0.08);
-  margin-top: 60px;
-  margin-right: 8%;
-  margin-left: 8%;
-  margin-bottom: 8%;
+#frontChapter {
   z-index: 4;
-  border-radius: 10px;
-  text-align: center;
+  background-color: transparent;
+  margin-top: 10%
+}
 
+.othersChapter {
+  display: flex;
+  justify-content: space-around;
+}
+
+div#backChapter div#nav {
+  color: #f1e8da;
+}
+
+article#extracts.row div#conteneur.col-12 div#title p {
+  margin: 15px;
 }
 
 #about,
@@ -506,58 +672,16 @@ article {
   margin-bottom: 8%;
   z-index: 4;
   border-radius: 10px;
-
-
-}
-
-/*     photo      */
-#photo {
-  margin: auto;
-}
-
-#photo img {
-  max-width: 350px;
-  width: 100%;
-  height: auto;
-  margin: auto;
-  align-self: center;
-  display: block;
-}
-
-/*     boutons     */
-.btn.btn-primary,
-input[type="submit"] {
-  background-color: #331902;
-  color: #e2d6c4;
-  border: 2px solid #e2d6c4;
-  padding: 15px 30px;
-  border-radius: 10px;
-}
-
-.btn.btn-primary:hover,
-input[type="submit"]:hover {
-  background-color: #e2d6c4;
-  color: #331902;
-  border: 2px solid #331902;
-  padding: 15px 30px;
-  border-radius: 10px;
-}
-
-/*     illustrations principaux titres     */
-html body div#mainTitles.row div#conteneur.col-12 div#photo.col-sm-6.col-md-4.col-lg-2 a img {
-  margin: 20px 10px;
-  border: 6px #331902 outset;
 }
 
 #list {
   padding: 20px;
 }
 
+
 #comment input,
 input[type="submit"] {
   margin-top: 20px;
-
-
 }
 
 textarea,
@@ -575,22 +699,28 @@ input[type:" date"] {
 }
 
 /* ---------------------------------------- */
-/* ==           interface admin            */
+/* ==         page formulaire               */
 /*---------------------------------------- */
-
-#administration {
-  margin-top: 350px;
-  text-align: center;
-  font-weight: 500;
+#backComments {
+  width: 100%;
+  background-attachment: fixed;
+  background-position: top;
+  background-image: url(../images/work-1627703_1920.jpg);
+  background-size: cover;
+  position: absolute;
 }
 
-#mceu_21 {
-  margin: 70px auto;
+#frontComments {
+  z-index: 4;
+  background-color: transparent;
+  margin-top: 10%
 }
 
-/* ---------------------------------------- */
-/* ==              Interface formulaire     */
-/*---------------------------------------- */
+.col-lg-3 > p:nth-child(1) {
+  text-align: justify;
+  margin: 15px;
+}
+
 input[type="submit"],
 #create > form:nth-child(4) > button:nth-child(1) {
   background-color: #331902;
@@ -611,6 +741,19 @@ input[type="submit"]:hover,
   border-radius: 5px;
 }
 
+/* ---------------------------------------- */
+/* ==           interface admin            */
+/*---------------------------------------- */
+
+#administration {
+  margin-top: 350px;
+  text-align: center;
+  font-weight: 500;
+}
+
+#mceu_21 {
+  margin: 70px auto;
+}
 
 #subtitle {
   margin-top: 40px;
@@ -654,7 +797,6 @@ input:not([type="submit"]) {
   position: relative;
   padding-left: 45px;
   cursor: pointer;
-
 }
 
 [type="radio"]:not(:checked) + label::before,
@@ -668,7 +810,6 @@ input:not([type="submit"]) {
   border: 1px solid #331902;
   background: #cbc2ba;
   border-radius: 3px;
-  /* angles arrondis */
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, .3);
 }
 
@@ -685,14 +826,10 @@ input:not([type="submit"]) {
 
 [type="radio"]:not(:checked) + label::after {
   opacity: 0;
-  /* coche invisible */
   transform: scale(0);
-  /* mise à l'échelle à 0 */
 }
 
 [type="radio"]:checked + label::after {
   opacity: 1;
-  /* coche opaque */
   transform: scale(1);
-  /* mise à l'échelle 1:1 */
 }
