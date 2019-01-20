@@ -12,7 +12,7 @@
 <?php
                 if (isset($_GET['from'])&&$_GET['from']=='frontend'){
                 ?>
-                <h4>Merci de nous avoir indiqué ce commentaire, nous allons le lire avec attention.</h4>
+                <div class="warning"><p>Merci de nous avoir indiqué ce commentaire, nous allons le lire avec attention.</p></div>
                 <?php
                 }
                 
@@ -47,6 +47,17 @@
         </article>
 
         <article id="letComment" class="row">
+            <?php
+            if (isset($_GET['ErreurMessage'])){
+               ?>
+                <div class="warning">
+                    <p>Désolé, nous n'avons pas pu enregistrer votre message. Veillez à ce qu'il ne contienne pas de caractères spéciaux</p>
+                </div>
+                <?php
+                }
+                
+            
+            ?>
             <h1>Laisser un commentaire </h1>
             <form action="./index.php?action=addComment&amp;id_chapter=<?=$_GET['id_chapter']?> " method="post">
                 <div class="col-12">

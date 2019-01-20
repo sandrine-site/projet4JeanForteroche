@@ -95,7 +95,7 @@ function signalComment($id_comment,$id_chapter,$from){
     elseif ($from =="'Chapter'") {
         header("Location: index.php?action=others&&id_chapter=".$id_chapter."&&id_comment=".$id_comment."&&from=".'frontend');
     }
-    else{throw new exception("nous n'avons pas pu signaler cet avis " . $from );
+    else{require('view/frontend/erreur.php');
         }
 
 }
@@ -111,8 +111,8 @@ function signalComment($id_comment,$id_chapter,$from){
 function addComment($id_chapter,$author,$comment){
   $commentsManager=new jeanForteroche\Model\CommentsManager;
   $affectedLines = $commentsManager->postComment($id_chapter, $author, $comment);
-    if ($affectedLines === false) {
-        throw new Exception('Impossible d\'ajouter le commentaire !');
+    if ($affectedLines === false){
+    header('Location: index.php?action=comments&id_chapter=' . $id_chapter."&& ErreurMessage=".true);
     }
     else {
         header('Location: index.php?action=comments&id=' . $id_chapter);

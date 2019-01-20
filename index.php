@@ -19,7 +19,10 @@ try{
             }
             else
             {
-                throw new exception('Aucun identifiant de chapitre envoyé');
+               throw new exception('Aucun identifiant de chapitre envoyé');
+                    
+                
+               
             }
         }
 
@@ -32,8 +35,8 @@ try{
                     addComment($_GET['id_chapter'],$_POST['author'],$_POST['comment']);
                 }
                 else
-                {
-                    throw new exception('Tous les champs ne sont pas remplis !');
+                {header('Location: index.php?action=comments&id_chapter=' . $_GET['id_chapter']."&& ErreurMessage=".true );
+                    
                 }
             }
             else

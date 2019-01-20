@@ -17,9 +17,9 @@
       <div class="col-12 conteneur">
         <h1>Billet simple pour l'Alaska </h1>
           <br/>
-          <h4> Afin de vous remercier de ses nombreuses années à me suivre. J'ai choisi de publier mon prochain ouvrage en ligne.<br/>
+          <p> Afin de vous remercier de ses nombreuses années à me suivre. J'ai choisi de publier mon prochain ouvrage en ligne.<br/>
               Je vous invite donc à vous installer confortablement, pour partir en voyage et découvrir l'Alaska. Qui sait peut-être que pour vous aussi ce voyage sera sans retour.<br/>
-              N'hésitez pas à me laisser des commentaires. Je pourrais les utiliser pour la suite de mon voyage.</h4>
+              N'hésitez pas à me laisser des commentaires. Je pourrais les utiliser pour la suite de mon voyage.</p>
       </div>
     </article>
     <!--Article à propos de l'auteur -->
@@ -64,10 +64,16 @@
     <!--Article derniers avis -->
     <article id="comments">
       <div class="col-12 conteneur">
+           <?php
+                if (isset($_GET['ErrorComments'])){
+                ?>
+                <div class="warning"><p>Veuillez m'excuser mais je n'ai pas compris votre demande</p></div>
+                <?php
+                }
           <?php
                 if (isset($_GET['from'])&&$_GET['from']=='frontend'){
                 ?>
-                <h4>Merci de nous avoir indiqué ce commentaire, nous allons le lire avec attention.</h4>
+                <div class="warning"><p>Merci de nous avoir indiqué ce commentaire, nous allons le lire avec attention.</p></div>
                 <?php
                 }
                 
