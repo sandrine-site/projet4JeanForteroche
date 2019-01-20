@@ -11,13 +11,13 @@
         <div id="title">
           <h3>
             chapitre :
-            <?= $post['id'] ?> -
+            <?= $post['id_chapter'] ?> -
             <?=htmlspecialchars($post['title'])?>
-            -
           </h3>
         </div>
         <p>
-          <?=nl2br(htmlspecialchars($post['content']))?><br /><br />
+          <br /><br />
+          <?=nl2br(htmlspecialchars($post['content']))?>
         </p>
       </div>
     </article>
@@ -25,26 +25,36 @@
     <article id="comments">
       <div class="row">
         <div class="col-12" id="conteneur">
+             <?php
+                if (isset($_GET['from'])&&$_GET['from']=='frontend'){
+                ?>
+                <h4>Merci de nous avoir indiqué ce commentaire, nous allons le lire avec attention.</h4>
+                <?php
+                }
+                
+        $number= $post['id_chapter'];
+          ?>
           <h1>
-            Les derniers avis sur le chapitre :
-            <?=$post['id']?>
+            Les derniers commentaires sur le chapitre :
+            <?=$post['id_chapter']?>
           </h1>
           <?php
             $i=1;
-            while ($comment = $comments->fetch())
-            {
-              if ($i<=4)
-              {
-          ?>
-          <div class="col-sm-12 col-md-6 col-lg-3" class="Avis">
+while ($comment = $comments->fetch())
+{
+if ($i<=4) { ?>
+          <div class="col-sm-12 col-md-6 col-lg-3 Avis">
+              
+              <h4> Par : 
+                <?= htmlspecialchars($comment['author']) ?>
+              </h4>
             <p>
               <?= nl2br(htmlspecialchars($comment['comment'])) ?>
               <br />
-              le :
-              <?= $comment['DateComment_fr'] ?>
-              <h4>
-                <?= htmlspecialchars($comment['author']) ?>
-              </h4>
+              <br />
+              <span>le :
+                  <?= $comment['DateComment_fr'] ?></span>
+              <a class="btn btn-secondary" href="./index.php?action=signalComment&&id_comment=<?=$comment['id_comment'] ?>&&id_chapter=<?=$comment['id_chapter'] ?>&&from='Chapter'"><em>signaler ce commentaire</em></a>
           </div>
           <?php
                 $i++;
@@ -55,21 +65,21 @@
         </div>
       </div>
       <div class="row">
-        <a class="btn btn-primary" href="./index.php?action=comments&&id=<?=$post['id'] ?>" role="button">Tous les avis/Laisser un avis</a>
+        <a class="btn btn-primary" href="./index.php?action=comments&&id_chapter=<?=$post['id_chapter'] ?>" role="button">Tous les commentaires/Laisser un commentaire</a>
       </div>
     </article>
   </div>
   <!-- accés aux autre chapitres -->
-  <div id="nav">
+   <article id="nav" class="row">
     <h4>Accéder aux autres chapitres :</h4>
     <div class="othersChapter">
       <p>
         <?php
           $i=1;
-          while ($i<=$len['COUNT(id)'])
+          while ($i<=$len['COUNT(id_chapter)'])
           {
         ?>
-        <a class="btn btn-primary" href="./index.php?action=others&&id=<?=$i ?>" role="button">
+        <a class="btn btn-primary" href="./index.php?action=others&&id_chapter=<?=$i ?>" role="button">
           Chapitre
           <?=$i?>
         </a>
@@ -79,7 +89,7 @@
         ?>
       </p>
     </div>
-  </div>
+    </article>
 </div>
 
 <?php $content=ob_get_clean(); ?>

@@ -1,5 +1,10 @@
 <?php
-
+/*
+ * this class manages the db connect
+ * package [jeanForteroche]\[Model]
+ * 
+ * @return $db 
+ */
 namespace jeanForteroche\Model;
 
 class Manager{
