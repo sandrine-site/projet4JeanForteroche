@@ -1,5 +1,6 @@
 <?php
 require('controller/frontend.php');
+require('controller/backend.php');
 try{
     if (isset($_GET['action']))
     {
@@ -19,10 +20,10 @@ try{
             }
             else
             {
-               throw new exception('Aucun identifiant de chapitre envoyé');
-                    
-                
-               
+                throw new exception('Aucun identifiant de chapitre envoyé');
+
+
+
             }
         }
 
@@ -36,7 +37,7 @@ try{
                 }
                 else
                 {header('Location: index.php?action=comments&id_chapter=' . $_GET['id_chapter']."&& ErreurMessage=".true );
-                    
+
                 }
             }
             else
@@ -50,7 +51,7 @@ try{
             if (isset($_GET['id_comment'])&&$_GET['id_comment']>0&&$_GET['id_chapter']&&$_GET['id_chapter']>0)
             {
 
-               $from=$_GET['from'];
+                $from=$_GET['from'];
                 signalComment($_GET['id_comment'],$_GET['id_chapter'],$from);
             }
             else
@@ -63,11 +64,26 @@ try{
         {
             require('view/frontend/creditsPhoto.php');
         }
+        elseif($_GET['action']=='interfaceAdmin'){
+            if(!empty($_POST['Name'])&&!empty($_POST['Password']))
+            {
+                verifiePws($_POST['Name'],$_POST['Password']); 
+                
+            }
+            else{
+                $message='vous devez rentrer un nom d\'utilisateur et un mot de passe';
+                require("view/frontend/password.php");}
+        }
+        elseif($_GET['action']=='adminAccueil'){
+            adminAccueil();
+            
+        }
     }
     else {
 
         post();
     }
+
 }
 catch(Exception $e)
 {
