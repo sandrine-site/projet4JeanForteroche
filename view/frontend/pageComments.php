@@ -8,18 +8,20 @@
         <article id="list" class="row">
             <div class="col-12" id="conteneur">
 
-                
-<?php
+
+                <?php
                 if (isset($_GET['from'])&&$_GET['from']=='frontend'){
                 ?>
-                <div class="warning"><p>Merci de nous avoir indiqué ce commentaire, nous allons le lire avec attention.</p></div>
+                <div class="warning">
+                    <p>Merci de nous avoir indiqué ce commentaire, nous allons le lire avec attention.</p>
+                </div>
                 <?php
                 }
                 
 ?>
 
 
-                <h1>Les derniers commentaires sur le chapitre :
+                <h1>Les commentaires sur le chapitre :
                     <?=$_GET['id_chapter'] ?>
                 </h1>
                 <?php
@@ -28,7 +30,7 @@
                 ?>
                 <div class="col-sm-12 col-md-6 col-lg-3 Avis">
 
-                    <h4> Par : 
+                    <h4> Par :
                         <?= htmlspecialchars($comment['author']) ?>
                     </h4>
                     <p>
@@ -50,10 +52,10 @@
             <?php
             if (isset($_GET['ErreurMessage'])){
                ?>
-                <div class="warning">
-                    <p>Désolé, nous n'avons pas pu enregistrer votre message. Veillez à ce qu'il ne contienne pas de caractères spéciaux</p>
-                </div>
-                <?php
+            <div class="warning">
+                <p>Désolé, nous n'avons pas pu enregistrer votre message. Veillez à remplir les deux champs et à ce qu'ils ne contiennent pas de caractères spéciaux</p>
+            </div>
+            <?php
                 }
                 
             
